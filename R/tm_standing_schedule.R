@@ -11,16 +11,23 @@
 #'
 #' @export
 
-tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y"))){
-  #using this as a check to make sure that the team abbrev was specified correctly
-  if(is.numeric(year) == F){
-    stop("year must be specified as a numeric value", call. = F)
-  } else if (year> as.numeric(format(Sys.Date(), "%Y"))){
-    stop("year is misspecified. Cannot be greater than the current year", call. = F)
-  } else if(year < 2000){
-    stop("year is too far back. Only pulling from the year 2000.")
-  }
+tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y")),
+                                  start_year = NULL, end_year = NULL){
+  #if just year is specified then we want to pull a single year
+  if(is.null(start_year)==T & is.null(end_year) == T){
+    #checking if a numeric value is specified
+    if(is.numeric(year) == F){
+      stop("year must be specified as a numeric value", call. = F)
+    } else if (year> as.numeric(format(Sys.Date(), "%Y"))){
+      stop("year is misspecified. Cannot be greater than the current year", call. = F)
+    } else if(year < 2000){
+      stop("year is too far back. Only pulling from the year 2000.")
+    }
+  } else if((is.null(start_year) == F & is.null(end_year) == T) | (is.null(start_year) == T & is.null(end_year) == F)){
+  stop("to specify a range start_year and end_year must both be entered", call. = F)
+}
 
+  #using this as a check to make sure that the team abbrev was specified correctly
   team_info <- team_specific_fill(team)
   base_url <- "https://www.baseball-reference.com/teams/"
 
