@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1512968741773.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "23|73|27|2|\n28|45|75|2|\n31|26|45|4|\n78|26|91|4|\n",
+    "hash" : "0",
+    "id" : "54AF8972",
+    "lastKnownWriteTime" : 1512970998,
+    "last_content_update" : 1512970998695,
+    "path" : "~/Documents/UCLA/git_projects/baseball_analysis/rwindow.baseball/R/team_specific_fill.R",
+    "project_path" : "R/team_specific_fill.R",
+    "properties" : {
+        "cursorPosition" : "100,29",
+        "scrollLine" : "19"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,29 @@
+library(devtools)
+install_github("BillPetti/baseballr")
+library(baseballr)
+
+year <- 1991
+contract_url <- "https://www.baseball-reference.com/teams/SFG/san-francisco-giants-salaries-and-contracts.shtml"
+url <- paste0("https://www.baseball-reference.com/leagues/MLB/", year, "-standings.shtml")
+test <- xml2::read_html(url)
+
+node_test <- rvest::html_nodes(test,"table")
+salary_table <- rvest::html_table(node_test)
+
+cots_url <- "http://legacy.baseballprospectus.com/compensation/cots/al-west/houston-astros/"
+
+al_east <- c("BOS", "NYY", "TOR", "BAL", "TBD")
+al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
+al_cent <- c("CLE", "MIN", "KC", "CHW", "DET")
+
+nl_east <- c("WSN", "MIA", "ATL", "NYM", "PHI")
+nl_west <- c("SF", "SD", "COL", "ARI", "LAD")
+nl_cent <- c("CHC", "MIL", "STL", "PIT", "CIN")
+
+all_teams <- c(al_east, al_west, al_cent, nl_east, nl_west, nl_cent)
+for(i in all_teams){
+  print(i)
+  print(tm_contract(i))
+}
+
+bos_sal <- tm_contract("BOS")

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1512968765938.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2119139343",
+    "id" : "E867C7FA",
+    "lastKnownWriteTime" : 1512971190,
+    "last_content_update" : 1512971190418,
+    "path" : "~/Documents/UCLA/git_projects/baseball_analysis/initial_explore.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "29,0",
+        "scrollLine" : "9"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
