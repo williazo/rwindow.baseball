@@ -4,6 +4,8 @@
 #'
 #' @param team Team abbreviation
 #' @param year Numeric year
+#' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
+#' @param start_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
 #'
 #' @import xml2
 #' @import rvest
