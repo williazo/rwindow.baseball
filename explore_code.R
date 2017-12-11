@@ -15,7 +15,7 @@ nl_cent <- c("CHC", "MIL", "STL", "PIT", "CIN")
 mlb <- c(al_east, al_west, al_cent, nl_east, nl_west, nl_cent)
 proper=function(s) gsub("(?<=\\b)([a-z])", "\\U\\1", tolower(s), perl=TRUE)
 full_tbl <- NULL
-for(i in nl_west){
+for(i in mlb){
   tm_info  <- team_specific_fill(i)
   Division <- paste(paste0(tm_info[[1]],":"), tm_info[[2]])
   full_name <- proper(gsub("-", " ",tm_info[[3]]))
