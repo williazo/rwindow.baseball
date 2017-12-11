@@ -17,7 +17,7 @@ team_specific_fill <- function(team){
   al_cent <- c("CLE", "MIN", "KC", "CHW", "DET")
 
   nl_east <- c("WSN", "MIA", "ATL", "NYM", "PHI")
-  nl_west <- c("SF", "SD", "COL", "ARI", "LAD")
+  nl_west <- c("SFG", "SDP", "COL", "ARI", "LAD")
   nl_cent <- c("CHC", "MIL", "STL", "PIT", "CIN")
 
   #checking to see if the team abbreviation was properly specified
@@ -92,9 +92,9 @@ team_specific_fill <- function(team){
     }
     else if(team %in% nl_west){
       division = "West"
-      if(team == "SF"){
+      if(team == "SFG"){
         ext = "san-francisco-giants"
-      } else if (team == "SD"){
+      } else if (team == "SDP"){
         ext = "san-diego-padres"
       } else if (team == "COL"){
         ext = "colorado-rockies"

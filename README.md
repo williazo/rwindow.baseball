@@ -17,6 +17,10 @@ Below is a table that lists the appropriate team abbreviations to use
 
 |Team |Full Name             |Division                 |
 |:----|:---------------------|:------------------------|
+|SFG  |San Francisco Giants  |National League: West    |
+|SDP  |San Diego Padres      |National League: West    |
+|COL  |Colorado Rockies      |National League: West    |
+|BOS  |Boston Red Sox        |American League: East    |
 |BOS  |Boston Red Sox        |American League: East    |
 |NYY  |New York Yankees      |American League: East    |
 |TOR  |Toronto Blue Jays     |American League: East    |
@@ -37,8 +41,8 @@ Below is a table that lists the appropriate team abbreviations to use
 |ATL  |Atlanta Braves        |National League: East    |
 |NYM  |New York Mets         |National League: East    |
 |PHI  |Philadelphia Phillies |National League: East    |
-|SF   |San Francisco Giants  |National League: West    |
-|SD   |San Diego Padres      |National League: West    |
+|SFG  |San Francisco Giants  |National League: West    |
+|SDP  |San Diego Padres      |National League: West    |
 |COL  |Colorado Rockies      |National League: West    |
 |ARI  |Arizona Diamondbacks  |National League: West    |
 |LAD  |Los Angeles Dodgers   |National League: West    |
