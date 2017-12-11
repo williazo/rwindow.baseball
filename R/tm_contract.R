@@ -36,6 +36,10 @@ tm_contract <- function(team){
   #player specific data
   pla_dat <- sal_dat[1:(which(sal_dat$Name == "Name")-1), ]
   #team summary data
-  sum_dat <- sal_dat[(which(sal_dat$Name == "Name") + 1):nrow(sal_dat), ]
+  #for the summary statistics the description spans multiple columns so I am removing that
+  sum_dat <- sal_dat[(which(sal_dat$Name == "Name") + 1):nrow(sal_dat), -c(6:10)]
+  names(sum_dat)[c(4,5)] <- c("Variable", "Description")
+  #removing extra blank rows
+  sum_dat <- sum_dat[-which(sum_dat$Variable==""),]
   return(list(pla_dat, sum_dat))
 }
