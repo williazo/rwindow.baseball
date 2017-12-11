@@ -74,3 +74,13 @@ col_game <- tm_standings_schedule("COL", 2009)
 max(lengths(regmatches(col_game$Streak, gregexpr("[+]", col_game$Streak))))
 #longest losing streak
 max(lengths(regmatches(col_game$Streak, gregexpr("[-]", col_game$Streak))))
+```
+
+Also, you can pull a range of years for a specific team using the `start_year` and `end_year` options in `tm_standings_schedule()`. Below I pull game results for the Detroit Tigers from the 2000-2010 seasons.
+```r
+tiger_games <- tm_standings_schedule("DET", start_year = 2000, end_year = 2010)
+tiger_games <- tiger_games[order(tiger_games$Gm.), ]
+#which years did the Tigers win the opening game
+opening_day <-  tiger_games[tiger_games$Gm.==1, ]
+tiger_games[which(opening_day$W.L=="W"), "Year"]
+```
