@@ -2,5 +2,6 @@
 
 export(team_specific_fill)
 export(tm_contract)
+export(tm_standings_schedule)
 import(rvest)
 import(xml2)
