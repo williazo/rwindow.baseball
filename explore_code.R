@@ -23,5 +23,7 @@ for(i in mlb){
   full_tbl <- rbind(full_tbl, row_info)
 }
 full_tbl <- as.data.frame(full_tbl)
+names(full_tbl) <- c("Team", "Full Name", "Division")
+knitr::kable(full_tbl)
 
 rockies_game_dat <- tm_standings_schedule("COL", start_year = 2007, end_year = 2008)
