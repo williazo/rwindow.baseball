@@ -36,5 +36,5 @@ tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y
   game_dat$home_gm <- ifelse(game_dat$Var.5 == "", 1, 0)
   #removing unnecessary columns
   game_dat <- game_dat[, -c(3,5)]
-
+  game_dat
 }
