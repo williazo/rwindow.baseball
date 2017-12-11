@@ -29,6 +29,12 @@ tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y
   tables <- rvest::html_nodes(html_page, "table")
   game_table <- rvest::html_table(tables)
 
-  as.data.frame(game_table)
+  game_dat <- as.data.frame(game_table)
+  #removing rows that have unnecessary headers
+  game_dat <- game_dat[-which(game_dat$Var.3 == ""), ]
+  #creating a home indicator variable
+  game_dat$home_gm <- ifelse(game_dat$Var.5 == "", 1, 0)
+  #removing unnecessary columns
+  game_dat <- game_dat[, -c(3,5)]
 
 }
