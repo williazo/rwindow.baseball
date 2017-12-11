@@ -21,6 +21,13 @@ for(i in mlb){
   full_name <- proper(gsub("-", " ",tm_info[[3]]))
   row_info <- cbind(i, full_name, Division)
   full_tbl <- rbind(full_tbl, row_info)
+
+  #testing to see if the tm_standings work for every team from the years 2000-2017
+  print(i)
+  tictoc::tic()
+  result <- tm_standings_schedule(i, start_year = 2000, end_year = 2017)
+  print(dim(result))
+  tictoc::toc()
 }
 full_tbl <- as.data.frame(full_tbl)
 names(full_tbl) <- c("Team", "Full Name", "Division")
