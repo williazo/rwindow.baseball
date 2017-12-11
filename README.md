@@ -14,38 +14,39 @@ devtools::install_github("williazo/rwindow.baseball")
 
 ## Team Abbreviations
 Below is a table that lists the appropriate team abbreviations to use
-|Team   |Full Name             |Division                 |
-|:---|:---------------------|:------------------------|
-|BOS |Boston Red Sox        |American League: East    |
-|NYY |New York Yankees      |American League: East    |
-|TOR |Toronto Blue Jays     |American League: East    |
-|BAL |Baltimore Orioles     |American League: East    |
-|TBD |Tampa Bay Rays        |American League: East    |
-|HOU |Houston Astros        |American League: West    |
-|LAA |Los Angeles Angels    |American League: West    |
-|SEA |Seattle Mariners      |American League: West    |
-|TEX |Texas Rangers         |American League: West    |
-|OAK |Oakland Athletics     |American League: West    |
-|CLE |Cleveland Indians     |American League: Central |
-|MIN |Minnesota Twins       |American League: Central |
-|KC  |Kansas City Royals    |American League: Central |
-|CHW |Chicago White Sox     |American League: Central |
-|DET |Detroit Tigers        |American League: Central |
-|WSN |Washington Nationals  |National League: East    |
-|MIA |Miami Marlins         |National League: East    |
-|ATL |Atlanta Braves        |National League: East    |
-|NYM |New York Mets         |National League: East    |
-|PHI |Philadelphia Phillies |National League: East    |
-|SF  |San Francisco Giants  |National League: West    |
-|SD  |San Diego Padres      |National League: West    |
-|COL |Colorado Rockies      |National League: West    |
-|ARI |Arizona Diamondbacks  |National League: West    |
-|LAD |Los Angeles Dodgers   |National League: West    |
-|CHC |Chicago Cubs          |National League: Central |
-|MIL |Milwaukee Brewers     |National League: Central |
-|STL |St Louis Cardinals    |National League: Central |
-|PIT |Pittsburgh Pirates    |National League: Central |
-|CIN |Cincinnati Reds       |National League: Central |
+
+|Team |Full Name             |Division                 |
+|:----|:---------------------|:------------------------|
+|BOS  |Boston Red Sox        |American League: East    |
+|NYY  |New York Yankees      |American League: East    |
+|TOR  |Toronto Blue Jays     |American League: East    |
+|BAL  |Baltimore Orioles     |American League: East    |
+|TBD  |Tampa Bay Rays        |American League: East    |
+|HOU  |Houston Astros        |American League: West    |
+|LAA  |Los Angeles Angels    |American League: West    |
+|SEA  |Seattle Mariners      |American League: West    |
+|TEX  |Texas Rangers         |American League: West    |
+|OAK  |Oakland Athletics     |American League: West    |
+|CLE  |Cleveland Indians     |American League: Central |
+|MIN  |Minnesota Twins       |American League: Central |
+|KC   |Kansas City Royals    |American League: Central |
+|CHW  |Chicago White Sox     |American League: Central |
+|DET  |Detroit Tigers        |American League: Central |
+|WSN  |Washington Nationals  |National League: East    |
+|MIA  |Miami Marlins         |National League: East    |
+|ATL  |Atlanta Braves        |National League: East    |
+|NYM  |New York Mets         |National League: East    |
+|PHI  |Philadelphia Phillies |National League: East    |
+|SF   |San Francisco Giants  |National League: West    |
+|SD   |San Diego Padres      |National League: West    |
+|COL  |Colorado Rockies      |National League: West    |
+|ARI  |Arizona Diamondbacks  |National League: West    |
+|LAD  |Los Angeles Dodgers   |National League: West    |
+|CHC  |Chicago Cubs          |National League: Central |
+|MIL  |Milwaukee Brewers     |National League: Central |
+|STL  |St Louis Cardinals    |National League: Central |
+|PIT  |Pittsburgh Pirates    |National League: Central |
+|CIN  |Cincinnati Reds       |National League: Central |
 
 
 ## Example
