@@ -23,6 +23,8 @@ tm_contract <- function(team){
   }else if(team == "MIA"){
     #contract info for Miami Marlins is listed under FLA
     team = "FLA"
+  } else if(team == "TBR"){
+    team = "TBD"
   }
   url <- paste0(base_url, team,"/",team_info[[3]], "-salaries-and-contracts.shtml")
   html_page <- xml2::read_html(url)

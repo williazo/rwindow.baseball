@@ -19,9 +19,6 @@ tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y
   team_info <- team_specific_fill(team)
   base_url <- "https://www.baseball-reference.com/teams/"
   #changing the tampa bay rays reference
-  if(team == "TBD"){
-    team = "TBR"
-  }
 
   #if just year is specified then we want to pull a single year
   if(is.null(start_year)==T & is.null(end_year) == T){
@@ -33,6 +30,23 @@ tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y
     } else if(year < 2000){
       stop("year is too far back. Only pulling from the year 2000.")
     }
+    #The Tampa Bay Rays were the Tampa Bay Devil Rays prior to 2007
+    if(team == "TBR" & year < 2008){
+      team = "TBD"
+    }
+    #The Los Angeles Angels were the Anaheim Angels before 2004
+    if(team == "LAA" & year < 2005){
+      team = "ANA"
+    }
+    #Washington Nationals were the Montreal Expos previously
+    if(team == "WSN" & year < 2005){
+      team = "MON"
+    }
+    #Miami Marlins were the Florida Marlins
+    if(team == "MIA" & year < 2012){
+      team = "FLA"
+    }
+
     url <- paste0(base_url, team,"/", year, "-schedule-scores.shtml")
     html_page <- xml2::read_html(url)
     tables <- rvest::html_nodes(html_page, "table")
@@ -63,7 +77,21 @@ tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y
           #now we are going to loop over each year and attach them together
           final_game <- NULL
           for(i in yr_range){
-            url <- paste0(base_url, team,"/", i, "-schedule-scores.shtml")
+            tm_current = team
+            #making name abbreviation adjustments for earlier years
+            if(team == "TBR" & i < 2008){
+              tm_current = "TBD"
+            }
+            if(team == "LAA" & i < 2005){
+              tm_current = "ANA"
+            }
+            if(team == "WSN" & i < 2005){
+              tm_current = "MON"
+            }
+            if(team == "MIA" & i < 2012){
+              tm_current = "FLA"
+            }
+            url <- paste0(base_url, tm_current ,"/", i, "-schedule-scores.shtml")
             html_page <- xml2::read_html(url)
             tables <- rvest::html_nodes(html_page, "table")
             game_table <- rvest::html_table(tables)

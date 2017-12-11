@@ -12,7 +12,7 @@
 
 
 team_specific_fill <- function(team){
-  al_east <- c("BOS", "NYY", "TOR", "BAL", "TBD")
+  al_east <- c("BOS", "NYY", "TOR", "BAL", "TBR")
   al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
   al_cent <- c("CLE", "MIN", "KC", "CHW", "DET")
 

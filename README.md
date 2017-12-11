@@ -21,7 +21,7 @@ Below is a table that lists the appropriate team abbreviations to use
 |NYY  |New York Yankees      |American League: East    |
 |TOR  |Toronto Blue Jays     |American League: East    |
 |BAL  |Baltimore Orioles     |American League: East    |
-|TBD  |Tampa Bay Rays        |American League: East    |
+|TBR  |Tampa Bay Rays        |American League: East    |
 |HOU  |Houston Astros        |American League: West    |
 |LAA  |Los Angeles Angels    |American League: West    |
 |SEA  |Seattle Mariners      |American League: West    |

@@ -4,7 +4,7 @@ install_github("williazo/rwindow.baseball")
 library(rwindow.baseball)
 
 #list of all teams
-al_east <- c("BOS", "NYY", "TOR", "BAL", "TBD")
+al_east <- c("BOS", "NYY", "TOR", "BAL", "TBR")
 al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
 al_cent <- c("CLE", "MIN", "KC", "CHW", "DET")
 
