@@ -19,13 +19,14 @@ lg_tm_value <- function(league, year = as.numeric(format(Sys.Date(), "%Y")), bat
   #need to be a league check here
 
   base_url <- "https://www.baseball-reference.com/leagues/"
-  #changing the tampa bay rays reference
 
   #specifying whether to pull team batting war or pitching war
   if(batting == T){
     value_pull <- "-value-batting"
-  } else{
+  } else if (batting == F){
     value_pull <- "-value-pitching"
+  } else{
+    stop("batting parameter only takes on T/F values.", call. = F)
   }
 
   #if just year is specified then we want to pull a single year
@@ -45,6 +46,8 @@ lg_tm_value <- function(league, year = as.numeric(format(Sys.Date(), "%Y")), bat
     value_table <- rvest::html_table(tables)
 
     value_dat <- as.data.frame(value_table)
+    #removing unnecessary league summary statistics
+    value_dat <- value_dat[- which(value_dat$Tm == ""), ]
     return(value_dat)
   }
   else if((is.null(start_year) == F & is.null(end_year) == T) | (is.null(start_year) == T & is.null(end_year) == F)){
@@ -70,6 +73,8 @@ lg_tm_value <- function(league, year = as.numeric(format(Sys.Date(), "%Y")), bat
 
           #value table
           value_dat <- as.data.frame(value_table)
+          #removing unnecessary league summary statistics
+          value_dat <- value_dat[- which(value_dat$Tm == ""), ]
           value_dat <- data.frame(Year = rep(i, nrow(value_dat)), value_dat)
           value_final <- rbind(value_final, value_dat)
         }
