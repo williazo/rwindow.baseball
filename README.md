@@ -17,10 +17,6 @@ Below is a table that lists the appropriate team abbreviations to use
 
 |Team |Full Name             |Division                 |
 |:----|:---------------------|:------------------------|
-|SFG  |San Francisco Giants  |National League: West    |
-|SDP  |San Diego Padres      |National League: West    |
-|COL  |Colorado Rockies      |National League: West    |
-|BOS  |Boston Red Sox        |American League: East    |
 |BOS  |Boston Red Sox        |American League: East    |
 |NYY  |New York Yankees      |American League: East    |
 |TOR  |Toronto Blue Jays     |American League: East    |
@@ -33,7 +29,7 @@ Below is a table that lists the appropriate team abbreviations to use
 |OAK  |Oakland Athletics     |American League: West    |
 |CLE  |Cleveland Indians     |American League: Central |
 |MIN  |Minnesota Twins       |American League: Central |
-|KC   |Kansas City Royals    |American League: Central |
+|KCR  |Kansas City Royals    |American League: Central |
 |CHW  |Chicago White Sox     |American League: Central |
 |DET  |Detroit Tigers        |American League: Central |
 |WSN  |Washington Nationals  |National League: East    |

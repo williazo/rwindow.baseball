@@ -14,7 +14,7 @@
 team_specific_fill <- function(team){
   al_east <- c("BOS", "NYY", "TOR", "BAL", "TBR")
   al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
-  al_cent <- c("CLE", "MIN", "KC", "CHW", "DET")
+  al_cent <- c("CLE", "MIN", "KCR", "CHW", "DET")
 
   nl_east <- c("WSN", "MIA", "ATL", "NYM", "PHI")
   nl_west <- c("SFG", "SDP", "COL", "ARI", "LAD")
@@ -65,7 +65,7 @@ team_specific_fill <- function(team){
         ext = "cleveland-indians"
       } else if(team == "MIN"){
         ext = "minnesota-twins"
-      } else if(team == "KC"){
+      } else if(team == "KCR"){
         ext = "kansas-city-royals"
       } else if(team == "CHW"){
         ext = "chicago-white-sox"
