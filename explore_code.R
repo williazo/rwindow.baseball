@@ -88,9 +88,36 @@ value_mlb <- value_mlb[order(value_mlb$Year, value_mlb$Tm), ]
 #excluding teams that changed names
 current_value <- subset(value_mlb, Tm%in%mlb)
 current_value$Tm <- factor(current_value$Tm, levels = MLB_colors$team[order(MLB_colors$team)])
+current_value <- dplyr::left_join(current_value, team_ref_tbl[, -3], by = c("Tm" = "ABRV"))
+
+#trends in salary for each team by league
 with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = Tm, wrap = League))+
   scale_color_manual(name = "Team", values = MLB_colors$color[order(MLB_colors$team)])+
   scale_y_continuous(labels = scales::dollar_format())+
   guides(linetype = F)+
+  scale_x_continuous(breaks = seq(2000, 2017, 5))+
+  xlab("Year")+
+  ylab("Team Salary")+
+  theme(legend.position = "bottom", legend.key.width = unit(5, "cm"))
+
+#plotting trends by division for each respective league
+with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = Division, wrap = League))+
+  scale_color_manual(name = "Team", values = cbPalette)+
+  scale_y_continuous(labels = scales::dollar_format())+
+  guides(linetype = F)+
+  scale_x_continuous(breaks = seq(2000, 2017, 5))+
+  xlab("Year")+
+  ylab("Team Salary")+
+  theme(legend.position = "bottom", legend.key.width = unit(5, "cm"))
+
+#plot relative changes in team salary
+with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = Tm, wrap = Tm,
+                                     scales = "free"))+
+  scale_color_manual(name = "Team", values = MLB_colors$color[order(MLB_colors$team)])+
+  scale_y_continuous(labels = scales::dollar_format())+
+  guides(linetype = F, color = F)+
+  scale_x_continuous(breaks = seq(2000, 2017, 5))+
+  xlab("Year")+
+  ylab("Team Salary")+
   theme(legend.position = "bottom", legend.key.width = unit(5, "cm"))
 
