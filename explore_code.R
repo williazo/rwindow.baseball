@@ -2,7 +2,8 @@
 library(devtools)
 install_github("williazo/rwindow.baseball")
 library(rwindow.baseball)
-
+#loading in the MLB color palette
+data("MLB_colors")
 #list of all teams
 al_east <- c("BOS", "NYY", "TOR", "BAL", "TBR")
 al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
@@ -54,17 +55,6 @@ home_games$home_counter <- ave(home_games$Gm., list(home_games$Year, home_games$
 home_games <- dplyr::left_join(home_games, team_ref_tbl, by = c("Tm"="ABRV"))
 home_games <- subset(home_games, is.na(League)==F)
 
-cbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-mlb_color_palette <- c("#A71930", "#CE1141", "#DF4601", "#BD3039", "#CC3433",
-                       "#000000", "#C6011F", "#E31937", "#333366", "#0C2C56",
-                       "#002D62", "#004687", "#BA0021", "#EF3E42", "#FF6600",
-                       "#0A2351", "#002B5C", "#FF5910", "#003087", "#003831",
-                       "#284898", "#FDB827", "#002D62", "#0C2C56", "#FD5A1E",
-                       "#C41E3A", "#092C5C", "#C0111F", "#134A8E", "#AB0003")
-team_colors <- as.data.frame(cbind(team = mlb[order(mlb)], color = mlb_color_palette), stringsAsFactors = F)
-team_colors <- dplyr::left_join(team_colors, team_ref_tbl, by = c("team" = "ABRV"))
-team_colors <- team_colors[with(team_colors, order(League, Division)), ]
-
 install_github("williazo/ggplot.spaghetti")
 library(ggplot.spaghetti)
 for(i in unique(home_games$League)){
@@ -97,9 +87,9 @@ value_mlb$salary <- as.numeric(gsub("[[:punct:]]", "", value_mlb$Salary))
 value_mlb <- value_mlb[order(value_mlb$Year, value_mlb$Tm), ]
 #excluding teams that changed names
 current_value <- subset(value_mlb, Tm%in%mlb)
-current_value$Tm <- factor(current_value$Tm, levels = team_colors$team[order(team_colors$team)])
+current_value$Tm <- factor(current_value$Tm, levels = MLB_colors$team[order(MLB_colors$team)])
 with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = Tm, wrap = League))+
-  scale_color_manual(name = "Team", values = team_colors$color[order(team_colors$team)])+
+  scale_color_manual(name = "Team", values = MLB_colors$color[order(MLB_colors$team)])+
   scale_y_continuous(labels = scales::dollar_format())+
   guides(linetype = F)+
   theme(legend.position = "bottom", legend.key.width = unit(5, "cm"))
