@@ -24,7 +24,7 @@ tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year 
 
   #Pulling data from fangraphs
   base_url <- "https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&"
-  url <- paste0(base_url,"lg=", lg, "&qual=", min_pa,"&type=8&season=", end_year, "&month=0&season1=", start_year, "&ind=0&team=", fg_numeric,
+  url <- paste0(base_url,"lg=", lg, "&qual=", min_pa,"&type=8&season=", end_year, "&month=0&season1=", start_year, "&ind=1&team=", fg_numeric,
                 "&rost=0&age=0&filter=&players=0&page=1_10000000")
   html_page <- xml2::read_html(url)
   url_nodes <- rvest::html_nodes(html_page, "table")
