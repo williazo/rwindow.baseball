@@ -124,3 +124,8 @@ with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = T
 
 #pulling fangraphs data
 tm_plyr_batting("BOS", year = 2017, min_pa = "y")
+
+bos_batting <- tm_plyr_batting("BOS", start_year = 2003, end_year= 2010, min_pa = 200)
+bos_batting[, c("AVG", "wOBA", "Season")] <- apply(bos_batting[, c("AVG", "wOBA", "Season")], 2, as.numeric)
+ggplot_spaghetti(y = bos_batting$wOBA, id = bos_batting$Name, time = bos_batting$Season, group = bos_batting$Name)+
+  scale_x_continuous(breaks = seq(2003, 2010, 3))
