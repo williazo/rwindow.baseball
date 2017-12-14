@@ -12,10 +12,16 @@
 tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year = NULL){
   team_info <- team_specific_fill(team)
   data("MLB_colors")
+
   lg_abrv <- unlist(lapply(regmatches(team_info[[1]],
                                       gregexpr("[[:upper:]]", team_info[[1]])), function(n) paste0(n, collapse = "")))
   lg <- tolower(lg_abrv)
+
+  if(is.null(start_year) == T & is.null(start_year) == T){
+    start_year = year; end_year = year
+  }
+
   #Pulling data from fangraphs
   base_url <- "https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&"
-  url <- paste0(base_url,"lg=", lg,"&type=8&season=", start_year, "&month=0&season1=", end_year, "&ind=0&team=", tm_numeric, "&rost=&age=&filter=&players=")
+  url <- paste0(base_url,"lg=", lg,"&type=8&season=", end_year, "&month=0&season1=", start_year, "&ind=0&team=", tm_numeric, "&rost=&age=&filter=&players=")
 }
