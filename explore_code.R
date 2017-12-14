@@ -4,6 +4,7 @@ install_github("williazo/rwindow.baseball")
 library(rwindow.baseball)
 #loading in the MLB color palette
 data("MLB_colors")
+
 #list of all teams
 al_east <- c("BOS", "NYY", "TOR", "BAL", "TBR")
 al_west <- c("HOU", "LAA", "SEA", "TEX", "OAK")
@@ -121,3 +122,5 @@ with(current_value, ggplot_spaghetti(y = salary, id = Tm, time = Year, group = T
   ylab("Team Salary")+
   theme(legend.position = "bottom", legend.key.width = unit(5, "cm"))
 
+#pulling fangraphs data
+tm_plyr_batting("BOS", year = 2017, min_pa = "y")
