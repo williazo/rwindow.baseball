@@ -1,6 +1,9 @@
-#'Pull the team standings and game by game schedule with results
+#'Scrape game results by team and season.
 #'
-#'By default the system uses the current year
+#'Pulls data on the team's opponent, result (W or L), runs allowed, runs scored, cumulative record, winning/losing pitcher last name,
+#'time of game, type of game (day or night), attendance, and current win streak. Each row represents one game.
+#'
+#'Data obtained from \url{https://www.baseball-reference.com}.
 #'
 #' @param team Team abbreviation, three leter character value. See the data object \code{MLB_colors} for approved abbreviations.
 #' @param year Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.
@@ -77,7 +80,21 @@ tm_standings_schedule <- function(team, year, start_year = NULL, end_year = NULL
     game_dat$home_gm <- ifelse(game_dat$Var.5 == "", 1, 0)
     #removing unnecessary columns
     game_dat <- game_dat[, -c(3,5)]
-    game_dat
+
+    #adding an indicator to show if game went to extra innings and removing the character value
+    game_dat$extra_innings <- ifelse(grepl(".*-wo", game_dat[, 5]) == T, 1, 0)
+    game_dat[, 5] <- gsub("-wo", "", game_dat[, 5])
+
+    #cleaning up attendance value
+    game_dat$Attendance <- as.numeric(gsub(",", "" , game_dat$Attendance))
+
+    #creating better variable names
+    names(game_dat)[c(1, 5, 9, 16)] <- c("Game", "win_loss", "cdf_win_loss", "day_night")
+
+    #converting runs allowed and runs scored to numeric values
+    game_dat[, c("R", "RA")] <- apply(game_dat[, c("R", "RA")], 2, as.numeric)
+    return(game_dat)
+
   }
   else if((is.null(start_year) == F & is.null(end_year) == T) | (is.null(start_year) == T & is.null(end_year) == F)){
     stop("to specify a range start_year and end_year must both be entered", call. = F)
@@ -121,6 +138,20 @@ tm_standings_schedule <- function(team, year, start_year = NULL, end_year = NULL
             game_dat$home_gm <- ifelse(game_dat$Var.5 == "", 1, 0)
             #removing unnecessary columns
             game_dat <- game_dat[, -c(3,5)]
+            #adding an indicator to show if game went to extra innings and removing the character value
+            game_dat$extra_innings <- ifelse(grepl(".*-wo", game_dat[, 5]) == T, 1, 0)
+            game_dat[, 5] <- gsub("-wo", "", game_dat[, 5])
+
+            #cleaning up attendance value
+            game_dat$Attendance <- as.numeric(gsub(",", "" , game_dat$Attendance))
+
+            #creating better variable names
+            names(game_dat)[c(1, 5, 9, 16)] <- c("Game", "win_loss", "cdf_win_loss", "day_night")
+
+            #converting runs allowed and runs scored to numeric values
+            game_dat[, c("R", "RA")] <- apply(game_dat[, c("R", "RA")], 2, as.numeric)
+
+            #adding the year the data was pulled from
             game_dat <- data.frame(Year = rep(i, nrow(game_dat)), game_dat)
             final_game <- rbind(final_game, game_dat)
           }

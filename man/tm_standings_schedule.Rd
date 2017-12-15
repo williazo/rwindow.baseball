@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_standing_schedule.R
 \name{tm_standings_schedule}
 \alias{tm_standings_schedule}
-\title{Pull the team standings and game by game schedule with results}
+\title{Scrape game results by team and season.}
 \usage{
 tm_standings_schedule(team, year, start_year = NULL, end_year = NULL)
 }
@@ -19,5 +19,9 @@ tm_standings_schedule(team, year, start_year = NULL, end_year = NULL)
 
 }
 \description{
-By default the system uses the current year
+Pulls data on the team's opponent, result (W or L), runs allowed, runs scored, cumulative record, winning/losing pitcher last name,
+time of game, type of game (day or night), attendance, and current win streak. Each row represents one game.
+}
+\details{
+Data obtained from \url{https://www.baseball-reference.com}.
 }
