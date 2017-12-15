@@ -4,13 +4,12 @@
 \alias{lg_tm_value}
 \title{Pull the value by team and season}
 \usage{
-lg_tm_value(league, year = as.numeric(format(Sys.Date(), "\%Y")),
-  batting = T, start_year = NULL, end_year = NULL)
+lg_tm_value(league, year, batting = T, start_year = NULL, end_year = NULL)
 }
 \arguments{
 \item{league}{Character league abbreviation. Either AL or NL.}
 
-\item{year}{Numeric year}
+\item{year}{Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.}
 
 \item{batting}{Indicator variable to specify whether to pull batting or pitching value. By default it is set to batting.}
 
@@ -25,6 +24,10 @@ By default the system uses the current year
 #pulling AL team batting values from the years 2009 to 2012
 lg_tm_value("AL", start_year = 2009, end_year = 2012)
 #pulling NL team values from most recent season
-lg_tm_value("NL", batting = FALSE)
+nl_pitching <- lg_tm_value("NL", batting = FALSE)
+
+#team with the highest and lowest pitching WAR from 2017 season in the National League
+rbind(nl_pitching[which(nl_pitching$WAR == max(nl_pitching$WAR)), c("Tm", "WAR")],
+nl_pitching[which(nl_pitching$WAR == min(nl_pitching$WAR)), c("Tm", "WAR")])
 
 }

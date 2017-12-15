@@ -4,17 +4,19 @@
 \alias{tm_standings_schedule}
 \title{Pull the team standings and game by game schedule with results}
 \usage{
-tm_standings_schedule(team, year = as.numeric(format(Sys.Date(), "\%Y")),
-  start_year = NULL, end_year = NULL)
+tm_standings_schedule(team, year, start_year = NULL, end_year = NULL)
 }
 \arguments{
-\item{team}{Team abbreviation}
+\item{team}{Team abbreviation, three leter character value. See the data object \code{MLB_colors} for approved abbreviations.}
 
-\item{year}{Numeric year}
+\item{year}{Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.}
 
 \item{start_year}{Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.}
 
 \item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
+}
+\value{
+
 }
 \description{
 By default the system uses the current year

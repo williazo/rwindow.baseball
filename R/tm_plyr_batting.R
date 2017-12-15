@@ -15,7 +15,8 @@
 #'
 #' @examples #reading in batters with at least 200 PA for the Boston Red Sox from 2003 to 2010
 #' bos_batting <- tm_plyr_batting("BOS", start_year = 2003, end_year= 2010, min_pa = 200)
-#' bos_batting[, c("AVG", "wOBA", "Season")] <- apply(bos_batting[, c("AVG", "wOBA", "Season")], 2, as.numeric)
+#' numeric_vars <- c("AVG", "wOBA", "Season")
+#' bos_batting[, numeric_vars] <- apply(bos_batting[, numeric_vars, 2, as.numeric)
 #' head(bos_batting)
 #'
 #' @seealso \code{\link{team_specific_fill}} for details on appropriate team values

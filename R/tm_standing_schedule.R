@@ -2,19 +2,37 @@
 #'
 #'By default the system uses the current year
 #'
-#' @param team Team abbreviation
-#' @param year Numeric year
+#' @param team Team abbreviation, three leter character value. See the data object \code{MLB_colors} for approved abbreviations.
+#' @param year Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
 #' @param end_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
 #'
 #' @import xml2
 #' @import rvest
 #'
+#' @return
 #'
 #' @export
 
-tm_standings_schedule <- function(team, year = as.numeric(format(Sys.Date(), "%Y")),
-                                  start_year = NULL, end_year = NULL){
+tm_standings_schedule <- function(team, year, start_year = NULL, end_year = NULL){
+
+  #checking to make sure all three parameters are not specified
+  if(missing(year) == FALSE & is.null(start_year) == FALSE & is.null(end_year) == FALSE){
+    warning("Should not specify year with both start_year and end_year. Only pulling the range specified by start_year and end_year", call. = FALSE)
+    year <- NULL
+  }
+
+  #will need to update this each season since opening day changes every year.
+  opening_day <- as.Date("03-29-2018", format = "%m-%d-%Y")
+  #setting the default year based on when the data is being querried.
+  if(missing(year)){
+    if(((opening_day - Sys.Date()) >= 0) == T){
+      year = as.numeric(format(opening_day, "%Y")) - 1
+    } else{
+      year = as.numeric(format(Sys.Date(), "%Y"))
+    }
+  }
+
   #using this as a check to make sure that the team abbrev was specified correctly
   team_info <- team_specific_fill(team)
   base_url <- "https://www.baseball-reference.com/teams/"
