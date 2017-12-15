@@ -14,7 +14,7 @@ tm_standings_schedule(team, year = as.numeric(format(Sys.Date(), "\%Y")),
 
 \item{start_year}{Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.}
 
-\item{start_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
+\item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
 }
 \description{
 By default the system uses the current year

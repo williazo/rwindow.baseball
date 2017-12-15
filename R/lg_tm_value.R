@@ -6,7 +6,7 @@
 #' @param batting Indicator variable to specify whether to pull batting or pitching value. By default it is set to batting.
 #' @param year Numeric year
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
-#' @param start_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
+#' @param end_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
 #'
 #' @import xml2
 #' @import rvest

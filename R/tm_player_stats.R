@@ -5,7 +5,7 @@
 #' @param team Team abbreviation
 #' @param year Numeric value representing the year. Default is to take the current year if the season has started. Or the most recent year if the season is over.
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
-#' @param start_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
+#' @param end_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
 #'
 #' @import xml2
 #' @import rvest
