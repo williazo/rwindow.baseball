@@ -56,21 +56,23 @@ tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year 
                                       gregexpr("[[:upper:]]", team_info[[1]])), function(n) paste0(n, collapse = "")))
   lg <- tolower(lg_abrv)
 
- #adding in the check to see if start_year oe end_year is specified
-  #neither start_year or end_year is specified
+  #code for checking that start_year and end_year are properly specified
   if(is.null(start_year) == T & is.null(end_year) == T){
     start_year = year; end_year = year
-  } #only one of the values is specified which should give an error
-  else if((is.null(start_year) == F & is.null(end_year) == T) | (is.null(start_year) == T & is.null(end_year) == F)){
+    #if not specified then use year value for both values
+  } else if((is.null(start_year) == F & is.null(end_year) == T) | (is.null(start_year) == T & is.null(end_year) == F)){
     stop("to specify a range start_year and end_year must both be entered", call. = F)
-  } #both values are properly specified
-  else if(is.null(start_year) == F & is.null(end_year) == F){
+    #only specified one of the two values
+  } else if(is.null(start_year) == F & is.null(end_year) == F){
+    #both are specified
     if(is.numeric(start_year) == F | is.numeric(end_year) == F){
       stop("Both start_year and end_year must be numeric", call. = F)
-    }
-    else if(is.numeric(start_year) == T & is.numeric(end_year) == T){
+      #stopping if they are both not numeric values
+    } else if(is.numeric(start_year) == T & is.numeric(end_year) == T){
+      #checking again to make sure they are both numeric
       if(start_year>end_year){
         stop("Improperly specified range. start_year must be less than or equal to end_year", call. = F)
+        #making sure that the start year is always lower than the end year
         }
     }
   }
@@ -92,6 +94,13 @@ tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year 
   #removing the extra top messy part
   team_tbl <- team_tbl[4:nrow(team_tbl),]
   names(team_tbl) <- col_names
+
+  #cleaning up the percent values
+  team_tbl[, grep("_pct", names(team_tbl))] <- apply(team_tbl[, grep("_pct", names(team_tbl))], 2, function(n) as.numeric(gsub(" \\%", "", n)))
+
+  #converting the numeric variables to numeric values
+  num_cols <- c(4:22)
+  team_tbl[, num_cols] <- apply(team_tbl[, num_cols], 2, as.numeric)
 
   return(team_tbl)
 }
