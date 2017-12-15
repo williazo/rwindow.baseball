@@ -21,7 +21,6 @@ tm_plyr_batting <- function(team, year , min_pa = 0, start_year = NULL, end_year
     }
 
   team_info <- team_specific_fill(team)
-  data("MLB_colors")
   fg_numeric <- MLB_colors[MLB_colors$team==team, "fg_id"]
 
   lg_abrv <- unlist(lapply(regmatches(team_info[[1]],
