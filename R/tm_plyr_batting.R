@@ -21,7 +21,7 @@ tm_plyr_batting <- function(team, year , min_pa = 0, start_year = NULL, end_year
     }
 
   team_info <- team_specific_fill(team)
-  fg_numeric <- MLB_colors[MLB_colors$team==team, "fg_id"]
+  fg_numeric <- rwindow.baseball::MLB_colors[rwindow.baseball::MLB_colors$team==team, "fg_id"]
 
   lg_abrv <- unlist(lapply(regmatches(team_info[[1]],
                                       gregexpr("[[:upper:]]", team_info[[1]])), function(n) paste0(n, collapse = "")))
