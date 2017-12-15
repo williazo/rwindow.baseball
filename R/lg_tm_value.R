@@ -1,8 +1,9 @@
-#'Pull the value by team and season
+#'Pull Salary Information and Team Aggregate Statistics
 #'
-#'By default the system uses the current year
+#'Scrape data from \url{https://www.baseball-reference.com} to look at total salary statitics as well as
+#'overall team measures for pitching and hitting. Data is pulled by league with a row for each team in that league.
 #'
-#' @param league Character league abbreviation. Either AL or NL.
+#' @param league Character league abbreviation. Either \code{"AL"} or \code{"NL"}.
 #' @param batting Indicator variable to specify whether to pull batting or pitching value. By default it is set to batting.
 #' @param year Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
@@ -13,6 +14,8 @@
 #'
 #' @examples #pulling AL team batting values from the years 2009 to 2012
 #' lg_tm_value("AL", start_year = 2009, end_year = 2012)
+#'
+#'
 #' #pulling NL team values from most recent season
 #' nl_pitching <- lg_tm_value("NL", batting = FALSE)
 #'
@@ -66,7 +69,7 @@ lg_tm_value <- function(league, year, batting = T, start_year = NULL, end_year =
     #checking if a numeric value is specified
     if(is.numeric(year) == F){
       stop("year must be specified as a numeric value", call. = F)
-    } else if (year> as.numeric(format(Sys.Date(), "%Y"))){
+    } else if (year > as.numeric(format(Sys.Date(), "%Y"))){
       stop("year is misspecified. Cannot be greater than the current year", call. = F)
     } else if(year < 2000){
       stop("year is too far back. Only pulling from the year 2000.")

@@ -2,12 +2,12 @@
 % Please edit documentation in R/lg_tm_value.R
 \name{lg_tm_value}
 \alias{lg_tm_value}
-\title{Pull the value by team and season}
+\title{Pull Salary Information and Team Aggregate Statistics}
 \usage{
 lg_tm_value(league, year, batting = T, start_year = NULL, end_year = NULL)
 }
 \arguments{
-\item{league}{Character league abbreviation. Either AL or NL.}
+\item{league}{Character league abbreviation. Either \code{"AL"} or \code{"NL"}.}
 
 \item{year}{Numeric year. Default is to take the past full season if pulled in the offseason or the current season if pulled after opening day.}
 
@@ -18,11 +18,14 @@ lg_tm_value(league, year, batting = T, start_year = NULL, end_year = NULL)
 \item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
 }
 \description{
-By default the system uses the current year
+Scrape data from \url{https://www.baseball-reference.com} to look at total salary statitics as well as
+overall team measures for pitching and hitting. Data is pulled by league with a row for each team in that league.
 }
 \examples{
 #pulling AL team batting values from the years 2009 to 2012
 lg_tm_value("AL", start_year = 2009, end_year = 2012)
+
+
 #pulling NL team values from most recent season
 nl_pitching <- lg_tm_value("NL", batting = FALSE)
 
