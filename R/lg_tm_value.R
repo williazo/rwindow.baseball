@@ -14,7 +14,7 @@
 #' @examples #pulling AL team batting values from the years 2009 to 2012
 #' lg_tm_value("AL", start_year = 2009, end_year = 2012)
 #' #pulling NL team values from most recent season
-#'lg_tm_value("NL", batting = F)
+#'lg_tm_value("NL", batting = FALSE)
 #'
 #' @export
 
