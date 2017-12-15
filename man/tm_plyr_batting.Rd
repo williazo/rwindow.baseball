@@ -10,7 +10,7 @@ tm_plyr_batting(team, year, min_pa = 0, start_year = NULL,
 \arguments{
 \item{team}{Specify the team abbreviation}
 
-\item{year}{Specify numeric year from which to pull}
+\item{year}{Specify numeric year from which to pull. Default is to take the current year if the season has started. Or the most recent year if the season is over.}
 
 \item{min_pa}{Minimum number of plate appearances for batters. Default is 0 and takes on values up to 1000. To see only qualified hitters use `y`.}
 

@@ -4,13 +4,12 @@
 \alias{tm_player_stats}
 \title{Pull the team stats for pitching and fielding}
 \usage{
-tm_player_stats(team, year = as.numeric(format(Sys.Date(), "\%Y")),
-  start_year = NULL, end_year = NULL)
+tm_player_stats(team, year, start_year = NULL, end_year = NULL)
 }
 \arguments{
 \item{team}{Team abbreviation}
 
-\item{year}{Numeric year}
+\item{year}{Numeric value representing the year. Default is to take the current year if the season has started. Or the most recent year if the season is over.}
 
 \item{start_year}{Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.}
 

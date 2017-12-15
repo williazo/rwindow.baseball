@@ -3,13 +3,23 @@
 #'Allows the user to scrape batting statistics by team and season from fangraphs.com
 #'
 #' @param team Specify the team abbreviation
-#' @param year Specify numeric year from which to pull
+#' @param year Specify numeric year from which to pull. Default is to take the current year if the season has started. Or the most recent year if the season is over.
 #' @param min_pa Minimum number of plate appearances for batters. Default is 0 and takes on values up to 1000. To see only qualified hitters use `y`.
 #' @param start_year Numeric value indicating the first year from which you want to pull data
 #' @param end_year Numeric value indicating the last year to pull for a year range.
 #'
 #'
-tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year = NULL){
+tm_plyr_batting <- function(team, year , min_pa = 0, start_year = NULL, end_year = NULL){
+  #will need to update this each season since opening day changes every year.
+  opening_day <- as.Date("03-29-2018", format = "%m-%d-%Y")
+    if(missing(year)){
+      if(((opening_day - Sys.Date()) >= 0) == T){
+        year = as.numeric(format(opening_day, "%Y")) - 1
+      } else{
+        year = as.numeric(format(Sys.Date(), "%Y"))
+      }
+    }
+
   team_info <- team_specific_fill(team)
   data("MLB_colors")
   fg_numeric <- MLB_colors[MLB_colors$team==team, "fg_id"]
@@ -41,4 +51,4 @@ tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year 
   names(team_tbl) <- col_names
 
   return(team_tbl)
-  }
+}

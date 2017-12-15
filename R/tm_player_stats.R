@@ -3,7 +3,7 @@
 #'By default the system uses the current year
 #'
 #' @param team Team abbreviation
-#' @param year Numeric year
+#' @param year Numeric value representing the year. Default is to take the current year if the season has started. Or the most recent year if the season is over.
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
 #' @param start_year Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.
 #'
@@ -13,12 +13,20 @@
 #'
 #' @export
 
-tm_player_stats <- function(team, year = as.numeric(format(Sys.Date(), "%Y")),
-                                  start_year = NULL, end_year = NULL){
+tm_player_stats <- function(team, year, start_year = NULL, end_year = NULL){
   #using this as a check to make sure that the team abbrev was specified correctly
   team_info <- team_specific_fill(team)
   base_url <- "https://www.baseball-reference.com/teams/"
-  #changing the tampa bay rays reference
+
+  #will need to update this each season since opening day changes every year.
+  opening_day <- as.Date("03-29-2018", format = "%m-%d-%Y")
+  if(missing(year)){
+    if(((opening_day - Sys.Date()) >= 0) == T){
+      year = as.numeric(format(opening_day, "%Y")) - 1
+    } else{
+      year = as.numeric(format(Sys.Date(), "%Y"))
+    }
+  }
 
   #if just year is specified then we want to pull a single year
   if(is.null(start_year)==T & is.null(end_year) == T){
