@@ -17,6 +17,9 @@
 lg_tm_value <- function(league, year = as.numeric(format(Sys.Date(), "%Y")), batting = T,
                             start_year = NULL, end_year = NULL){
   #need to be a league check here
+  if(league %in% c("AL", "NL") == F){
+    stop("Must specify league as either AL or NL", call. = F)
+  }
 
   base_url <- "https://www.baseball-reference.com/leagues/"
 
