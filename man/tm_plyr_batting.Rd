@@ -19,7 +19,8 @@ tm_plyr_batting(team, year, min_pa = 0, start_year = NULL,
 \item{end_year}{Numeric value indicating the last year to pull for a year range.}
 }
 \value{
-Returns table with data.frame object on the team hitters with the main statistics referenced on the fangraphs leaderboard.
+data.frame object on the team hitters with the main statistics referenced on the fangraphs batting leaderboard.
+When pulling multiple seasons the data.frame is ordered not by season but by WAR value in descending order.
 }
 \description{
 Allows the user to scrape leaderboard batting statistics by team and season from \url{http://www.fangraphs.com}.
@@ -27,8 +28,6 @@ Allows the user to scrape leaderboard batting statistics by team and season from
 \examples{
 #reading in batters with at least 200 PA for the Boston Red Sox from 2003 to 2010
 bos_batting <- tm_plyr_batting("BOS", start_year = 2003, end_year= 2010, min_pa = 200)
-numeric_vars <- c("AVG", "wOBA", "Season")
-bos_batting[, numeric_vars] <- apply(bos_batting[, numeric_vars, 2, as.numeric)
 head(bos_batting)
 
 }

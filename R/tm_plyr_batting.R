@@ -11,12 +11,11 @@
 #' @import xml2
 #' @import rvest
 #'
-#' @return Returns table with data.frame object on the team hitters with the main statistics referenced on the fangraphs leaderboard.
+#' @return data.frame object on the team hitters with the main statistics referenced on the fangraphs batting leaderboard.
+#' When pulling multiple seasons the data.frame is ordered not by season but by WAR value in descending order.
 #'
 #' @examples #reading in batters with at least 200 PA for the Boston Red Sox from 2003 to 2010
 #' bos_batting <- tm_plyr_batting("BOS", start_year = 2003, end_year= 2010, min_pa = 200)
-#' numeric_vars <- c("AVG", "wOBA", "Season")
-#' bos_batting[, numeric_vars] <- apply(bos_batting[, numeric_vars, 2, as.numeric)
 #' head(bos_batting)
 #'
 #' @seealso \code{\link{team_specific_fill}} for details on appropriate team values
