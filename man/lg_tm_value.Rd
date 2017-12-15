@@ -8,7 +8,7 @@ lg_tm_value(league, year = as.numeric(format(Sys.Date(), "\%Y")),
   batting = T, start_year = NULL, end_year = NULL)
 }
 \arguments{
-\item{league}{League abbreviation. Either AL or NL.}
+\item{league}{Character league abbreviation. Either AL or NL.}
 
 \item{year}{Numeric year}
 
@@ -20,4 +20,11 @@ lg_tm_value(league, year = as.numeric(format(Sys.Date(), "\%Y")),
 }
 \description{
 By default the system uses the current year
+}
+\examples{
+#pulling AL team batting values from the years 2009 to 2012
+lg_tm_value("AL", start_year = 2009, end_year = 2012)
+#pulling NL team values from most recent season
+lg_tm_value("NL", batting = F)
+
 }

@@ -2,7 +2,7 @@
 #'
 #'By default the system uses the current year
 #'
-#' @param league League abbreviation. Either AL or NL.
+#' @param league Character league abbreviation. Either AL or NL.
 #' @param batting Indicator variable to specify whether to pull batting or pitching value. By default it is set to batting.
 #' @param year Numeric year
 #' @param start_year Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.
@@ -11,6 +11,10 @@
 #' @import xml2
 #' @import rvest
 #'
+#' @examples #pulling AL team batting values from the years 2009 to 2012
+#' lg_tm_value("AL", start_year = 2009, end_year = 2012)
+#' #pulling NL team values from most recent season
+#'lg_tm_value("NL", batting = F)
 #'
 #' @export
 
