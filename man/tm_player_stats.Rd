@@ -2,7 +2,7 @@
 % Please edit documentation in R/tm_player_stats.R
 \name{tm_player_stats}
 \alias{tm_player_stats}
-\title{Pull the team stats for pitching and fielding}
+\title{Pull Team Specific Player data for Pitchers and Hitters for Specified Season or Range of Seasons}
 \usage{
 tm_player_stats(team, year, start_year = NULL, end_year = NULL)
 }
@@ -14,6 +14,14 @@ tm_player_stats(team, year, start_year = NULL, end_year = NULL)
 \item{start_year}{Numeric value that identifies the beginning year to pull a range of data for the team of interest. This is an optional parameter.}
 
 \item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
+}
+\value{
+list of two data frames. The first list is the batting specific player data and the second list is the pitching specific data
+
+ @examples #pulling data from the Florida and Miami Marlins from the years 2002 to 2008.
+ miami_dat <- tm_player_stats("MIA", start_year = 2002, end_year = 2008)
+ miami_pitchers <- miami_dat[[2]]
+ head(miami_pitchers)
 }
 \description{
 By default the system uses the current year

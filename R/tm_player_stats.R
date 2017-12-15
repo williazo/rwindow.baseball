@@ -1,4 +1,4 @@
-#'Pull the team stats for pitching and fielding
+#'Pull Team Specific Player data for Pitchers and Hitters for Specified Season or Range of Seasons
 #'
 #'By default the system uses the current year
 #'
@@ -10,6 +10,12 @@
 #' @import xml2
 #' @import rvest
 #'
+#' @return list of two data frames. The first list is the batting specific player data and the second list is the pitching specific data
+#'
+#'  @examples #pulling data from the Florida and Miami Marlins from the years 2002 to 2008.
+#'  miami_dat <- tm_player_stats("MIA", start_year = 2002, end_year = 2008)
+#'  miami_pitchers <- miami_dat[[2]]
+#'  head(miami_pitchers)
 #'
 #' @export
 
@@ -17,6 +23,12 @@ tm_player_stats <- function(team, year, start_year = NULL, end_year = NULL){
   #using this as a check to make sure that the team abbrev was specified correctly
   team_info <- team_specific_fill(team)
   base_url <- "https://www.baseball-reference.com/teams/"
+
+  #checking to make sure all three parameters are not specified
+  if(missing(year) == FALSE & is.null(start_year) == FALSE & is.null(end_year) == FALSE){
+    warning("Should not specify year with both start_year and end_year. Only pulling the range specified by start_year and end_year", call. = FALSE)
+    year <- NULL
+  }
 
   #will need to update this each season since opening day changes every year.
   opening_day <- as.Date("03-29-2018", format = "%m-%d-%Y")
