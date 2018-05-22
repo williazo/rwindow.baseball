@@ -17,12 +17,14 @@ tm_player_stats(team, year, start_year = NULL, end_year = NULL)
 }
 \value{
 list of two data frames. The first list is the batting specific player data and the second list is the pitching specific data
-
- @examples #pulling data from the Florida and Miami Marlins from the years 2002 to 2008.
- miami_dat <- tm_player_stats("MIA", start_year = 2002, end_year = 2008)
- miami_pitchers <- miami_dat[[2]]
- head(miami_pitchers)
 }
 \description{
 By default the system uses the current year
+}
+\examples{
+ #pulling data from the Florida and Miami Marlins from the years 2002 to 2008.
+ miami_dat <- tm_player_stats("MIA", start_year = 2002, end_year = 2008)
+ miami_pitchers <- miami_dat[[2]]
+ head(miami_pitchers)
+
 }

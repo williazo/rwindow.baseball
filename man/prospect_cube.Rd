@@ -18,12 +18,21 @@ prospect_cube(team, year, src = "BA", start_year = NULL, end_year = NULL)
 \item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
 }
 \description{
-Scrape data from \url{https://www.thebaseball.cube} to look at the top 100 prospects list for each team or the top prospects by team.
+Scrape data from \url{http://www.thebaseballcube.com} to look at the top 100 prospects list for each team or the top prospects by team.
 Can use this information to approximate the relative strength of each teams farm system.
 }
 \examples{
 #pulling top 100 prospectes from 2017
 2017_prospects <- prospect_cube(year = 2017, src = "PIPE")
 table(2017_prospects$current_lvl)
+
+#pulling prospect rankings from Colorado Rockies from Baseball America
+col_prospects <- prospect_cube(team = "COL", src = "BA")
+library(dplyr)
+top_prospects <- col_prospects \%>\%
+                   group_by(Year)\%>\%
+                   summarise(num_top_100 = sum(MLB!=""), avg_age = mean(as.numeric(Age)))
+top_prospects <- top_prospects[order(top_prospects$num_top_100, decreasing = TRUE),]
+top_prospects
 
 }
