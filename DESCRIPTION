@@ -6,6 +6,7 @@ Author: Justin Williams
 Maintainer: Justin Williams <williazo@ucla.edu>
 Description: This package is used as part of the analysis on how long each team in the MLB is competitive. It strives to look at what factors influence the length of each team's window. Data is pulled from the baseball-reference webpage.
 License: What license is it under?
+Depends: R (>= 2.10)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
