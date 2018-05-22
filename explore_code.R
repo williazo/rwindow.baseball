@@ -15,11 +15,11 @@ nl_west <- c("SFG", "SDP", "COL", "ARI", "LAD")
 nl_cent <- c("CHC", "MIL", "STL", "PIT", "CIN")
 
 mlb <- c(al_east, al_west, al_cent, nl_east, nl_west, nl_cent)
-proper=function(s) gsub("(?<=\\b)([a-z])", "\\U\\1", tolower(s), perl=TRUE)
+proper = function(s) gsub("(?<=\\b)([a-z])", "\\U\\1", tolower(s), perl=TRUE)
 full_tbl <- NULL
 full_result <- NULL
 team_ref_tbl <- NULL
-#pulling all of the game results for mlb teams starting in 2000-2017
+#pulling all of the game results for mlb teams from in 2000-2018
 for(i in mlb){
   tm_info  <- team_specific_fill(i)
   Division_w_league <- paste(paste0(tm_info[[1]],":"), tm_info[[2]])
@@ -32,10 +32,13 @@ for(i in mlb){
   team_ref_row <- cbind(i, full_name, league, division)
   team_ref_tbl <- rbind(team_ref_tbl, team_ref_row)
 
-  #pulling data from 2000 to 2017 on the game results of each team
-  #result <- tm_standings_schedule(i, start_year = 2000, end_year = 2017)
-  #full_result <- rbind(full_result, result)
+  #pulling data from 2000 to 2018 on the game results of each team
+  result <- tm_standings_schedule(i, start_year = 2000, end_year = 2018)
+  #if the last year is the current season then the remaining games have NA's and so we want to drop all the rows with missing run values
+  result <- subset(result, is.na(R) == FALSE)
+  full_result <- rbind(full_result, result)
 }
+
 #code to create the README reference table
 full_tbl <- as.data.frame(full_tbl, stringsAsFactors = F)
 names(full_tbl) <- c("Team", "Full Name", "Division")
