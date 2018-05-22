@@ -137,3 +137,20 @@ with(subset(bos_batting, Name%in%mlt_seasons$Var1), ggplot_spaghetti(y = WAR, id
                                                                      wrap = Name, scales = "free"))+
   scale_x_continuous(breaks = seq(1991, 2017, 1))+
   guides(linetype = F, color = F)
+
+### practice pulling prospect data
+col_prospects <- prospect_cube(team = "COL", src = "BA")
+library(dplyr)
+top_prospects <- col_prospects %>%
+  group_by(Year)%>%
+  summarise(num_top_100 = sum(MLB!=""), avg_age = mean(as.numeric(Age)))
+top_prospects <- top_prospects[order(top_prospects$num_top_100, decreasing = TRUE), ]
+top_prospects
+plot(x = top_prospects$num_top_100, y = top_prospects$avg_age, xlab = "Number of Top 100 Prospects",
+                                   ylab = "Average Age of Top 10 Prospects (yrs.)", main = "Colorado Rockies",
+     col = MLB_colors[MLB_colors$team=="COL","color"], pch = 19)
+abline(lm(avg_age~num_top_100, data = top_prospects), col = MLB_colors[MLB_colors$team=="COL","color"], lty = 2)
+lines(loess.smooth(x = top_prospects$num_top_100, y = top_prospects$avg_age), lty = 3)
+
+plot(x = top_prospects$Year, y = top_prospects$num_top_100)
+
