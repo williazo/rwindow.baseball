@@ -2,6 +2,7 @@
 
 export(lg_tm_value)
 export(prospect_cube)
+export(prospect_fg)
 export(team_specific_fill)
 export(tm_contract)
 export(tm_player_stats)
