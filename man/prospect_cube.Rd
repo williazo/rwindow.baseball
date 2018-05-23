@@ -23,8 +23,8 @@ Can use this information to approximate the relative strength of each teams farm
 }
 \examples{
 #pulling top 100 prospectes from 2017
-2017_prospects <- prospect_cube(year = 2017, src = "PIPE")
-table(2017_prospects$current_lvl)
+top_prospects <- prospect_cube(year = 2017, src = "PIPE")
+table(top_prospects$current_lvl)
 
 #pulling prospect rankings from Colorado Rockies from Baseball America
 col_prospects <- prospect_cube(team = "COL", src = "BA")
