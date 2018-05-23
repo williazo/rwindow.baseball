@@ -100,6 +100,7 @@ tm_plyr_batting <- function(team, year, min_pa = 0, start_year = NULL, end_year 
   #converting the numeric variables to numeric values
   num_cols <- c(4:22)
   team_tbl[, num_cols] <- apply(team_tbl[, num_cols], 2, as.numeric)
+  team_tbl$Tm <- team
 
   return(team_tbl)
 }
