@@ -4,7 +4,8 @@
 \alias{prospect_fg}
 \title{Pull FanGraphs Prospect Rankings from THE BOARD}
 \usage{
-prospect_fg(team, year, start_year = NULL, end_year = NULL, pos)
+prospect_fg(team, year, start_year = NULL, end_year = NULL, pos,
+  scout_grades = FALSE)
 }
 \arguments{
 \item{team}{Specify the team abbreviation as character value. Use this value to pull the top prospects by team}
@@ -16,6 +17,8 @@ prospect_fg(team, year, start_year = NULL, end_year = NULL, pos)
 \item{end_year}{Numeric value that identifies the ending year to pull a range of data for the team of interest. This is an optional parameter.}
 
 \item{pos}{Character value specifying a specific group of positions. By default position is set to all. See \url{https://www.fangraphs.com/scoutboard.aspx?draft=2018prospect&type=0&pos=all&team=all} for a list of all positions available.}
+
+\item{scout_grades}{Indicator to pull the scout grades for each prospect. Based on the 20-80 scale. Default is not to pull the grades and only pull the value. Options are `TRUE` or `FALSE`.}
 }
 \description{
 Scrape data from \url{https://www.fangraphs.com} to look at the top prospects based on ratings from FanGraphs prospect analysts
