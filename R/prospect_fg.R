@@ -13,7 +13,11 @@
 #' @import xml2
 #' @import rvest
 #'
-#' @examples
+#' @examples #pulling prospect rankings from the 2017 Colorado Rockies for all hitters
+#' prospect_fg(year = 2017, team = "COL", pos = "BAT")
+#'
+#' #pulling tool grades for 2017-2018 Los Angeles Dodgers
+#' prospect_fg(start_year = 2017, end_year = 2018, team = "LAD", scout_grades = TRUE)
 #'
 #' @export
 
@@ -99,8 +103,11 @@ prospect_fg <- function(team, year, start_year = NULL, end_year = NULL, pos, sco
     }else{
       prop_tbl <- prop_tbl
     }
-    #removing the video column since these are not useful for data analysis
+
+    if(scout_grades == FALSE){
+    #removing the video column from the value table since these are not useful for data analysis
     prop_tbl <- data.frame(prop_tbl[, -which(names(prop_tbl)=="Video")])
+    }
     #adding in year of ranking
     prop_tbl <- data.frame(prop_tbl, Year = yr)
   })

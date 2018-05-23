@@ -25,5 +25,10 @@ Scrape data from \url{https://www.fangraphs.com} to look at the top prospects ba
 Can use this information to approximate the relative strength of each teams farm system.
 }
 \examples{
+#pulling prospect rankings from the 2017 Colorado Rockies for all hitters
+prospect_fg(year = 2017, team = "COL", pos = "BAT")
+
+#pulling tool grades for 2017-2018 Los Angeles Dodgers
+prospect_fg(start_year = 2017, end_year = 2018, team = "LAD", scout_grades = TRUE)
 
 }
